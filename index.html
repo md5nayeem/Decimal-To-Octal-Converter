@@ -5,33 +5,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Decimal to Octal Converter</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <style>
+        /* Reset default styles */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        /* Set base font size */
         html {
             font-size: 62.5%;
         }
 
+        /* Set body styles */
         body {
             width: 100%;
-            height: 100vh !important;
-            overflow: hidden !important;
-            background: url(bg.jpg);
+            height: 100vh;
+            overflow: hidden;
 
             background-size: 100vw 100vh;
             background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-image: linear-gradient(to right, #8800ff, #c800ff, #a3469e, #be54a1, #d663a5);
         }
 
-        .container {
+        /* Set container styles */
+        .converter-container {
             width: 28rem;
             height: 28rem;
 
@@ -40,18 +44,20 @@
             align-items: center;
             flex-direction: column;
 
-            background: #b6c2ff5d;
+            background: #ffffff;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             backdrop-filter: blur(0px);
             -webkit-backdrop-filter: blur(0px);
             border-radius: 10px;
         }
 
-        .lottie {
+        /* Set lottie animation styles */
+        .lottie-animation {
             margin-top: -3rem;
             height: 8rem;
         }
 
+        /* Set label styles */
         label {
             font-size: 1.5rem;
             font-weight: bold;
@@ -59,6 +65,7 @@
             color: rgb(85, 85, 85);
         }
 
+        /* Set input styles */
         input {
             padding: 1rem;
             border-radius: 0.5rem !important;
@@ -70,11 +77,13 @@
             color: rgb(85, 85, 85);
         }
 
+        /* Set input placeholder styles */
         input::placeholder {
             color: rgb(85, 85, 85) !important;
             font-size: 0.85rem;
         }
 
+        /* Set button styles */
         button {
             font-size: 1.2rem;
             padding: 1rem;
@@ -86,14 +95,15 @@
             background-color: #0275d8;
             color: white;
             font-weight: bold;
-
         }
 
+        /* Set button hover styles */
         button:hover {
             cursor: pointer !important;
             transform: scale(0.97);
         }
 
+        /* Set textarea styles */
         textarea {
             resize: none;
             border: none;
@@ -107,6 +117,7 @@
             padding: 0.5rem;
         }
 
+        /* Set textarea placeholder styles */
         textarea::placeholder {
             color: rgb(85, 85, 85) !important;
             position: absolute;
@@ -120,26 +131,33 @@
 
 <body>
 
-    <div class="container" >
-        <div class="lottie">
+    <div class="converter-container">
+        <div class="lottie-animation">
             <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
             <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_FVqg63.json" background="transparent"
                 speed="1" loop autoplay></lottie-player>
         </div>
-        <label for="decimal">Decimal => Octal</label><br>
-        <input type="number" id="decimal" placeholder="Enter Decimal Number (max:17 digit)" autofocus autocomplete="off"><br>
-        <button type="button" id="btn">CONVERT</button>
-        <textarea id="txtarea" placeholder="NOTHING TO SHOW"></textarea>
+        <label for="decimal-input">Decimal to Octal Converter</label><br>
+        <input type="number" id="decimal-input" placeholder="Enter Decimal Number (max:17 digit)" autofocus autocomplete="off"><br>
+        <button type="button" id="convert-button">CONVERT</button>
+        <textarea id="output-textarea" placeholder="Nothing to show" readonly></textarea>
     </div>
 
     <script>
-        document.getElementById("btn").onclick = function () {
-            var x = document.getElementById("decimal").value;
-            var y = parseInt(x);
-            var z = y.toString(8);
+        // Add event listener to the convert button
+        document.getElementById("convert-button").addEventListener("click", function () {
+            // Get the decimal input value
+            var decimalInput = document.getElementById("decimal-input").value;
 
-            document.getElementById("txtarea").innerHTML = `${z}`;
-        }
+            // Parse the decimal input to an integer
+            var decimalNumber = parseInt(decimalInput);
+
+            // Convert the decimal number to octal
+            var octalNumber = decimalNumber.toString(8);
+
+            // Display the octal number in the output textarea
+            document.getElementById("output-textarea").innerHTML = `${octalNumber}`;
+        });
     </script>
 </body>
 
